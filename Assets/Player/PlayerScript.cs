@@ -35,7 +35,7 @@ public class PlayerScript : MonoBehaviour
 
     public void MoveUp()
     {
-
+        Debug.Log("asd");
         selfRB.velocity = new Vector2(selfRB.velocity.x, moveSpeed);
     }
 
