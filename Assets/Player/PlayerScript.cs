@@ -35,12 +35,13 @@ public class PlayerScript : MonoBehaviour
 
     public void MoveUp()
     {
+
         selfRB.velocity = new Vector2(selfRB.velocity.x, moveSpeed);
     }
 
     public void MoveDown()
     {
-        selfRB.velocity = new Vector2(selfRB.velocity.x, -moveSpeed);
+         selfRB.velocity = new Vector2(selfRB.velocity.x, -moveSpeed);
     }
 
     public void MoveStop()
@@ -53,5 +54,10 @@ public class PlayerScript : MonoBehaviour
     {
         Instantiate(bullet1, launchPoint1.position, Quaternion.identity);
         Instantiate(bullet1, launchPoint2.position, Quaternion.identity);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("COLLISION WITH PLAYER");
     }
 }

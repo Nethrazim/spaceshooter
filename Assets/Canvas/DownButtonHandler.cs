@@ -5,14 +5,19 @@ using UnityEngine;
 public class DownButtonHandler : MonoBehaviour
 {
     public GameObject Player;
+    private PlayerScript playerScript;
 
+    public void Start()
+    {
+        playerScript = Player.GetComponent<PlayerScript>();
+    }
     public void MoveDown()
     {
-        Player.GetComponent<PlayerScript>().MoveDown();
+        playerScript.MoveDown();
     }
 
     public void MoveStop()
     {
-        Player.GetComponent<PlayerScript>().MoveStop();
+        playerScript.MoveStop();
     }
 }

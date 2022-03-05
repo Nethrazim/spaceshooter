@@ -5,6 +5,7 @@ ScriptsOnlyBuild:
     - BulletScript
     - DownButtonHandler
     - Enemy1Movement
+    - Enemy2Script
     - EnemySpawner
     - OnFireHandler
     - PlayerScript
@@ -96,6 +97,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 4532}
     - Class: 114
       Script: {instanceID: 5030}
+    - Class: 114
+      Script: {instanceID: 30990}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -397,7 +400,7 @@ ScriptsOnlyBuild:
     className: SpriteShapeController
   - hash:
       serializedVersion: 2
-      Hash: 6445f24398867ae578e90c0515d99b82
+      Hash: e27dff5b66d116752603e3b398a73458
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EnemySpawner
@@ -695,6 +698,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.2D.IK.Runtime.dll
     namespaceName: UnityEngine.U2D.IK
     className: FabrikSolver2D
+  - hash:
+      serializedVersion: 2
+      Hash: 7d65b706530446ed164e28f73a71d216
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Enemy2Script
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

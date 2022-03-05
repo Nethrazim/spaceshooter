@@ -6,13 +6,21 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject Enemy1;
+    public GameObject Enemy2;
     public GameObject Boss;
     public bool hasBoss = false;
+    
     private Transform spawnPoint1;
     private Transform spawnPoint2;
     private Transform spawnPoint3;
     private Transform spawnPoint4;
     private Transform spawnPoint5;
+    public Transform[] ladderSpawnPoints;
+    public Transform[] ladderSpawnPointsReverse;
+    public Transform[] group1SpawnPoints;
+    public Transform[] group2SpawnPoints;
+    public Transform[] oblicalPath1;
+
     private int spawnRandomValue;
     private System.Random randomGenerator = new System.Random();
     private int maxGeneratedOnSamePosition = 3;
@@ -27,7 +35,7 @@ public class EnemySpawner : MonoBehaviour
         spawnPoint4 = GameObject.Find("SpawnPoint4").transform;
         spawnPoint5 = GameObject.Find("SpawnPoint5").transform;
 
-        InvokeRepeating("SpawnEnemy", 1.2f, 0.8f);
+        InvokeRepeating("SpawnEnemy", 1.2f, 2.5f);
     }
 
     // Update is called once per frame
@@ -45,49 +53,64 @@ public class EnemySpawner : MonoBehaviour
 
         if (total > 0)
         {
-            switch (generateRandomInt(1,7))
+            switch (generateRandomInt(1,9))
             {
                 case 1:
-                    Instantiate(Enemy1, spawnPoint1.position, Quaternion.identity);
-                    Instantiate(Enemy1, spawnPoint3.position, Quaternion.identity);
-                    total -= 2;
+                    foreach (Transform t in group1SpawnPoints)
+                    {
+                        Instantiate(Enemy1, t.position, Quaternion.identity);
+                    }
+                    total--;
                     break;
                 case 2:
-                    Instantiate(Enemy1, spawnPoint2.position, Quaternion.identity);
-                    Instantiate(Enemy1, spawnPoint5.position, Quaternion.identity);
-                    total -= 2;
+                    foreach (Transform t in group2SpawnPoints)
+                    {
+                        Instantiate(Enemy1, t.position, Quaternion.identity);
+                    }
+                    total--;
                     break;
                 case 3:
-                    Instantiate(Enemy1, spawnPoint3.position, Quaternion.identity);
-                    Instantiate(Enemy1, spawnPoint5.position, Quaternion.identity);
-                    total -= 2;
+                    foreach (Transform t in ladderSpawnPoints)
+                    {
+                        Instantiate(Enemy1, t.position, Quaternion.identity);
+                    }
                     break;
                 case 4:
-                    Instantiate(Enemy1, spawnPoint4.position, Quaternion.identity);
-                    Instantiate(Enemy1, spawnPoint2.position, Quaternion.identity);
-                    total -= 2;
+                    foreach (Transform t in group2SpawnPoints)
+                    {
+                        Instantiate(Enemy1, t.position, Quaternion.identity);
+                    }
+                    total--;
                     break;
                 case 5:
-                    Instantiate(Enemy1, spawnPoint5.position, Quaternion.identity);
-                    Instantiate(Enemy1, spawnPoint2.position, Quaternion.identity);
-                    total -= 2;
+                    foreach (Transform t in oblicalPath1)
+                    {
+                        Instantiate(Enemy2, t.position, Quaternion.identity);
+                    }
+                    total--;
                     break;
                 case 6:
-                    Debug.Log("6");
-                    if (generateRandomInt(1, 10) % 4 == 0)
+                    if (generateRandomInt(1, 10) % 4 == 0 && !hasBoss )
                     {
                         Instantiate(Boss, spawnPoint1.position, Quaternion.identity);
                         total--;
+                        hasBoss = true;
+                    }
+                    break;
+                case 7:
+                    foreach (Transform t in ladderSpawnPoints)
+                    {
+                        Instantiate(Enemy1, t.position, Quaternion.identity);
+                    }
+                    break;
+                case 8:
+                    foreach (Transform t in ladderSpawnPointsReverse)
+                    {
+                        Instantiate(Enemy1, t.position, Quaternion.identity);
                     }
                     break;
 
             }
-        }
-        else if(!hasBoss)
-        {
-            Instantiate(Boss, spawnPoint5.position, Quaternion.identity);
-            Instantiate(Boss, spawnPoint1.position, Quaternion.identity);
-            hasBoss = true;
         }
         
     }
