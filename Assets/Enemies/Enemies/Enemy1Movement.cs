@@ -54,11 +54,10 @@ public class Enemy1Movement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "bullet")
+        if (collision.gameObject.tag == "bullet" || collision.gameObject.tag == "Player")
         {
             Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
-
         }
     }
 }

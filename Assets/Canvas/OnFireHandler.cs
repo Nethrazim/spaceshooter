@@ -17,4 +17,9 @@ public class OnFireHandler : MonoBehaviour
     {
         playerScript.Fire();
     }
+
+    public void FireSpecial()
+    {
+        playerScript.FireSpecial();
+    }
 }

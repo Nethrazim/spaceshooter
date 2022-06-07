@@ -22,7 +22,7 @@ public class RouteScript : MonoBehaviour
     private int index = 0;
     private System.Random randomGenerator = new System.Random();
 
-    private int life = 50;
+    private int life = 100;
     // Start is called before the first frame update
     void Start()
     {

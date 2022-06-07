@@ -602,6 +602,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy1: {fileID: 8625071348324264601, guid: c36a06298355f3840a43aaa46e9eebaa, type: 3}
+  Enemy2: {fileID: 1756487661067799277, guid: 35abedc243321d44898c783be3868c4d, type: 3}
+  Enemy3: {fileID: 5502144034870778216, guid: fb84032eb95c499438bf29e3f109ad22, type: 3}
   Boss: {fileID: 1689907854914624621, guid: 32f2254caafc2fa46b1bfe069eb98cfa, type: 3}
   hasBoss: 0
   ladderSpawnPoints:
@@ -617,3 +619,5 @@ MonoBehaviour:
   group1SpawnPoints:
   - {fileID: 1982143300}
   - {fileID: 662014146}
+  group2SpawnPoints: []
+  oblicalPath1: []

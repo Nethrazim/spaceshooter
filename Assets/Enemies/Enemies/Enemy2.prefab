@@ -12,6 +12,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3391942636448980173, guid: c36a06298355f3840a43aaa46e9eebaa, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6678178
+      objectReference: {fileID: 0}
+    - target: {fileID: 3391942636448980173, guid: c36a06298355f3840a43aaa46e9eebaa, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6678178
+      objectReference: {fileID: 0}
+    - target: {fileID: 3391942636448980173, guid: c36a06298355f3840a43aaa46e9eebaa, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6678178
+      objectReference: {fileID: 0}
+    - target: {fileID: 3391942636448980173, guid: c36a06298355f3840a43aaa46e9eebaa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -51,6 +63,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 4645571215693544596, guid: c36a06298355f3840a43aaa46e9eebaa, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cc54ca6e9039adf4f9146cffe09a4a85, type: 3}
+    - target: {fileID: 4932283198085893814, guid: c36a06298355f3840a43aaa46e9eebaa, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 4932283198085893814, guid: c36a06298355f3840a43aaa46e9eebaa, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2.36
+      objectReference: {fileID: 0}
     - target: {fileID: 8625071348324264601, guid: c36a06298355f3840a43aaa46e9eebaa, type: 3}
       propertyPath: m_Name
       value: Enemy2
@@ -63,12 +87,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8625071348324264601, guid: c36a06298355f3840a43aaa46e9eebaa, type: 3}
   m_PrefabInstance: {fileID: 8057542854769762420}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &4665937375669714105 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3391942636448980173, guid: c36a06298355f3840a43aaa46e9eebaa, type: 3}
-  m_PrefabInstance: {fileID: 8057542854769762420}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &-4442198954819582567
+--- !u!114 &-4572207232145404047
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -77,14 +96,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1756487661067799277}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d25067be250a15645a58d7bb94d141f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 66d51ac3ff5d9414c8a68c50c663994e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 7053821038032526922, guid: 1ebfa1778f7df934bb8a9dc7df85332a, type: 3}
-  moveSpeed: 6
-  _transform: {fileID: 4665937375669714105}
-  routePoints:
-  - {fileID: 4933383461191863877, guid: 545146215380eec49b3b051ed617c0f8, type: 3}
-  - {fileID: 2493388055137080463, guid: 61d98b61b1627ee4aa329cd023ef90d8, type: 3}
-  - {fileID: 8030572467061967431, guid: d60a8b49da95edb439a8155c96c72410, type: 3}
-  - {fileID: 5984966747397608886, guid: 5bb0f5751c1a6e24ab29a1d0a05ee8a1, type: 3}
+  explosion: {fileID: 0}
+  moveSpeed: 2

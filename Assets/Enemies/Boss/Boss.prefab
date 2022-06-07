@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1811065807}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BossLaunchPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5761108673284324030}
   - component: {fileID: 9192326362538989830}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,9 +123,9 @@ GameObject:
   - component: {fileID: 7455987746504030572}
   - component: {fileID: 1628871006332864174}
   - component: {fileID: -3405229286469741286}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: basic_enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,7 +139,7 @@ Transform:
   m_GameObject: {fileID: 1689907854914624621}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 14.763558, y: -7.3580456, z: 0}
-  m_LocalScale: {x: 0.74936, y: 0.74936, z: 0.74936}
+  m_LocalScale: {x: 0.97679085, y: 0.97679085, z: 0.97679085}
   m_Children:
   - {fileID: 5761108673284324030}
   - {fileID: 1811065807}
