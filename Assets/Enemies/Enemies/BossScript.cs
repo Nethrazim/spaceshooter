@@ -2,12 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class RouteScript : MonoBehaviour
+public class BossScript : MonoBehaviour
 {
     public GameObject hitExplosion;
     public GameObject bossDeathExplosion;
-
+    public Text StatusText;
     private bool isAlive = true;
 
     public Transform[] routePoints;
@@ -69,7 +70,16 @@ public class RouteScript : MonoBehaviour
         
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OpenEndLevelPanel()
+    {
+        GameOverPanelScript.instance.setStatusVisibility(true);
+        GameOverPanelScript.instance.setGameOverVisibility(false);
+        GameOverPanelScript.instance.ShowGameOverPanel(true);
+        Time.timeScale = 0f;
+        Destroy(gameObject);
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if(isAlive == true && collision.gameObject.tag == "bullet")
         {
@@ -79,8 +89,8 @@ public class RouteScript : MonoBehaviour
             {
                 isAlive = false;
                 Instantiate(bossDeathExplosion, transform.position, Quaternion.identity);
-                Destroy(gameObject);
-
+                this.gameObject.transform.localScale = new Vector3(0, 0, 0);
+                Invoke("OpenEndLevelPanel", 2f);
             }
             else
             {

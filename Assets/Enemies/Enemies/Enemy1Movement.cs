@@ -52,7 +52,7 @@ public class Enemy1Movement : MonoBehaviour
         return selfRB.velocity.y;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "bullet" || collision.gameObject.tag == "Player")
         {

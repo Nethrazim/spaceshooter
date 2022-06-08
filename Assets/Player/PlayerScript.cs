@@ -21,6 +21,11 @@ public class PlayerScript : MonoBehaviour
     private Transform launchPoint2;
     private Transform launchPointCenter;
 
+    public Transform TopLimit;
+    public Transform BottomLimit;
+    public Transform RightLimit;
+    public Transform LeftLimit;
+
 
     public GameObject playerExplosion;
     // Start is called before the first frame update
@@ -38,7 +43,25 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (selfRB.position.y > TopLimit.position.y - TopLimit.localScale.y)
+        {
+            selfRB.velocity = new Vector2(0, -moveSpeed / 4);
+        }
 
+        if (selfRB.position.y < BottomLimit.position.y + BottomLimit.localScale.y)
+        {
+            selfRB.velocity = new Vector2(0, moveSpeed / 4);
+        }
+
+        if (selfRB.position.x > RightLimit.position.x + RightLimit.localScale.x)
+        {
+            selfRB.velocity = new Vector2(- moveSpeed / 4, 0);
+        }
+
+        if (selfRB.position.x < LeftLimit.position.x - LeftLimit.localScale.x)
+        {
+            selfRB.velocity = new Vector2(moveSpeed / 4, 0);
+        }
     }
 
     public void MoveLeft()
@@ -75,32 +98,55 @@ public class PlayerScript : MonoBehaviour
 
     public void FireSpecial()
     {
-        GameObject bullet2 = Instantiate(bulletStar2, launchPointCenter.position, Quaternion.identity) as GameObject;
-        bullet2.GetComponent<BulletScript2>().angle = 2;
+        //GameObject bullet2 = Instantiate(bulletStar2, launchPointCenter.position, Quaternion.identity) as GameObject;
+        //bullet2.GetComponent<BulletScript2>().angle = 2;
         GameObject bullet1 = Instantiate(bulletStar2, launchPointCenter.position, Quaternion.identity) as GameObject;
         bullet1.GetComponent<BulletScript2>().angle = 1;
         GameObject bullet0 = Instantiate(bulletStar2, launchPointCenter.position, Quaternion.identity) as GameObject;
         bullet0.GetComponent<BulletScript2>().angle = 0;
         GameObject bulletm1 = Instantiate(bulletStar2, launchPointCenter.position, Quaternion.identity) as GameObject;
         bulletm1.GetComponent<BulletScript2>().angle = -1;
-        GameObject bulletm2 = Instantiate(bulletStar2, launchPointCenter.position, Quaternion.identity) as GameObject;
-        bulletm2.GetComponent<BulletScript2>().angle = -2;
+        //GameObject bulletm2 = Instantiate(bulletStar2, launchPointCenter.position, Quaternion.identity) as GameObject;
+        //bulletm2.GetComponent<BulletScript2>().angle = -2;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "basic_enemy")
         {
             this.life --;
-            LifeText.text = this.life.ToString();
+            if (life < 0) life = 0;
+
+            Instantiate(playerExplosion, gameObject.transform.position, Quaternion.identity);
         }
 
-        if (life == 0)
+        if(collision.gameObject.tag == "bullet")
+        {
+            this.life-=2;
+            if (life < 0) life = 0;
+
+            Instantiate(playerExplosion, gameObject.transform.position, Quaternion.identity);
+        }
+
+        
+
+        LifeText.text = this.life.ToString();
+
+        if (collision.gameObject.tag == "bounds")
+        {
+            Debug.Log("Move into BOUND");
+            this.MoveStop();
+        }
+
+        if (life <= 0)
         {
             Instantiate(playerExplosion, gameObject.transform.position, Quaternion.identity);
-            GameObject.Destroy(gameObject);
             Time.timeScale = 0f;
             GameOverPanelScript.instance.ShowGameOverPanel(true);
+            GameOverPanelScript.instance.setStatusVisibility(false);
+            GameOverPanelScript.instance.setGameOverVisibility(true);
+            Time.timeScale = 0f;
+            GameObject.Destroy(gameObject);
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }

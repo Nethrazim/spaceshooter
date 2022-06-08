@@ -54,7 +54,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Enemies\Enemies\Enemy1Movement.cs" />
-    <Compile Include="Assets\Enemies\Enemies\RouteScript.cs" />
+    <Compile Include="Assets\Enemies\Enemies\BossScript.cs" />
     <Compile Include="Assets\Canvas\UpButtonHandler.cs" />
     <Compile Include="Assets\RestartButtonScript.cs" />
     <Compile Include="Assets\Canvas\OnFireHandler.cs" />
@@ -66,6 +66,8 @@
     <Compile Include="Assets\BossBulletScript.cs" />
     <Compile Include="Assets\Player\BulletScript2.cs" />
     <Compile Include="Assets\Canvas\DownButtonHandler.cs" />
+    <Compile Include="Assets\Canvas\RightButtonHandler.cs" />
+    <Compile Include="Assets\Canvas\LeftButtonHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Canvas\Fonts\fresh_fruit\More Info.txt" />

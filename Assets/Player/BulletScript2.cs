@@ -26,13 +26,13 @@ public class BulletScript2 : MonoBehaviour
                     rigidbody2D.velocity = new Vector2(_moveSpeed, _moveSpeed/4);
                     break;
                 case 1:
-                    rigidbody2D.velocity = new Vector2(_moveSpeed, _moveSpeed / 6);//rigidbody2D.velocity.y + yVelocityStep1
+                    rigidbody2D.velocity = new Vector2(_moveSpeed, _moveSpeed / 18);//rigidbody2D.velocity.y + yVelocityStep1
                     break;
                 case 0:
                     rigidbody2D.velocity = new Vector2(_moveSpeed, rigidbody2D.velocity.y);
                     break;
                 case -1:
-                    rigidbody2D.velocity = new Vector2(_moveSpeed, -(_moveSpeed / 6));
+                    rigidbody2D.velocity = new Vector2(_moveSpeed, -(_moveSpeed / 18));
                     break;
                 case -2:
                     rigidbody2D.velocity = new Vector2(_moveSpeed, -(_moveSpeed / 4));

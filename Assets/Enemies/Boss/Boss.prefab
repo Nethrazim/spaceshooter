@@ -160,6 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitExplosion: {fileID: 7053821038032526922, guid: 7035cbd898883e9498e6465e59a2facb, type: 3}
   bossDeathExplosion: {fileID: 5451212659664340258, guid: 720453a53a54b3b44b91abe4779bec33, type: 3}
+  StatusText: {fileID: 384558816731389599, guid: 830d04e9a44ce9c4186ba95aaa6ffa00, type: 3}
   routePoints:
   - {fileID: 1170766420979449743, guid: 055759bf449f8d0438f6af80e5802f6f, type: 3}
   - {fileID: 587027788719776730, guid: 2cedc2d16e589db48820c8090ca5a7fa, type: 3}
@@ -182,7 +183,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.01757121, y: 0.037579417}
