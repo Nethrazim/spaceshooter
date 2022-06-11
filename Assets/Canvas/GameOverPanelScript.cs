@@ -10,6 +10,7 @@ public class GameOverPanelScript : MonoBehaviour
 
     public Text GameOverText;
     public Text StatusText;
+    public Button ContinueButton;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +46,19 @@ public class GameOverPanelScript : MonoBehaviour
         }
             
     }
+
+    public void setContinueButtonVisibility(bool value)
+    {
+        if (!value)
+        {
+            ContinueButton.transform.localScale = new Vector3(0, 0, 0);
+        }
+        else
+        {
+            ContinueButton.transform.localScale = new Vector3(2.8f, 3.6f, 2.8f);
+        }
+    }
+
 
 
     public void ShowGameOverPanel(bool value)

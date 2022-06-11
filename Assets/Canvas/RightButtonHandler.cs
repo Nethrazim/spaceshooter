@@ -5,20 +5,20 @@ using UnityEngine;
 public class RightButtonHandler : MonoBehaviour
 {
     public GameObject Player;
-    private PlayerScript playerScript;
+    private PlayerMovementScript script;
 
     public void Start()
     {
-        playerScript = Player.GetComponent<PlayerScript>();
+        script = Player.GetComponent<PlayerMovementScript>();
     }
 
     public void MoveRight()
     {
-        playerScript.MoveRight();
+        script.MoveRight();
     }
 
     public void MoveStop()
     {
-        playerScript.MoveStop();
+        script.MoveStop();
     }
 }

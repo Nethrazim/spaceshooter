@@ -53,21 +53,27 @@
     <UnityVersion>2020.3.26f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Enemies\Enemies\Enemy1Movement.cs" />
-    <Compile Include="Assets\Enemies\Enemies\BossScript.cs" />
+    <Compile Include="Assets\Enemies\Enemies\Enemy1Script.cs" />
+    <Compile Include="Assets\Enemies\Boss\BossScript.cs" />
     <Compile Include="Assets\Canvas\UpButtonHandler.cs" />
-    <Compile Include="Assets\RestartButtonScript.cs" />
+    <Compile Include="Assets\Canvas\RestartButtonScript.cs" />
     <Compile Include="Assets\Canvas\OnFireHandler.cs" />
     <Compile Include="Assets\Enemies\EnemiesSpawner\EnemySpawner.cs" />
+    <Compile Include="Assets\Enemies\Enemies\DropsScript.cs" />
+    <Compile Include="Assets\Canvas\LeftButtonHandler.cs" />
     <Compile Include="Assets\Player\PlayerScript.cs" />
-    <Compile Include="Assets\GameOverPanelScript.cs" />
+    <Compile Include="Assets\Canvas\GameOverPanelScript.cs" />
     <Compile Include="Assets\Enemies\Enemies\Enemy2Script.cs" />
     <Compile Include="Assets\Player\BulletScript.cs" />
-    <Compile Include="Assets\BossBulletScript.cs" />
-    <Compile Include="Assets\Player\BulletScript2.cs" />
+    <Compile Include="Assets\Enemies\Boss\BossBulletScript.cs" />
+    <Compile Include="Assets\Player\BulletStarScript.cs" />
     <Compile Include="Assets\Canvas\DownButtonHandler.cs" />
+    <Compile Include="Assets\SpecialWeaponLevel1Script.cs" />
     <Compile Include="Assets\Canvas\RightButtonHandler.cs" />
-    <Compile Include="Assets\Canvas\LeftButtonHandler.cs" />
+    <Compile Include="Assets\Player\PlayerScriptLvl2.cs" />
+    <Compile Include="Assets\Player\PlayerMovementScript.cs" />
+    <Compile Include="Assets\Player\PlayerFireScript.cs" />
+    <Compile Include="Assets\Canvas\ContinueScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Canvas\Fonts\fresh_fruit\More Info.txt" />

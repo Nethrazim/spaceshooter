@@ -23,11 +23,11 @@ public class BossScript : MonoBehaviour
     private int index = 0;
     private System.Random randomGenerator = new System.Random();
 
-    private int life = 100;
+    public int life = 100;
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("Fire", 1.0f, 2.0f);
+        InvokeRepeating("Fire", 2.0f, 3.0f);
     }
 
     public void Fire()
@@ -75,6 +75,7 @@ public class BossScript : MonoBehaviour
         GameOverPanelScript.instance.setStatusVisibility(true);
         GameOverPanelScript.instance.setGameOverVisibility(false);
         GameOverPanelScript.instance.ShowGameOverPanel(true);
+        GameOverPanelScript.instance.setContinueButtonVisibility(true);
         Time.timeScale = 0f;
         Destroy(gameObject);
     }

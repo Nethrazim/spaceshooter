@@ -26,8 +26,8 @@ public class EnemySpawner : MonoBehaviour
     private int total = 10;
     private bool canGenerateBoss = true;
 
-    private int cursorIdx = 0;
-    private int[] enemyWaves = new int[30];
+    public int cursorIdx = 50;
+    private int[] enemyWaves = new int[50];
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +39,7 @@ public class EnemySpawner : MonoBehaviour
 
         generateEnemyWaves();
         
-        InvokeRepeating("SpawnEnemy", 1.2f, 2.5f);
+        InvokeRepeating("SpawnEnemy", 2.5f, 3.5f);
         Invoke("CanSpawn", 3f);
     }
 
@@ -96,10 +96,10 @@ public class EnemySpawner : MonoBehaviour
                         break;
                     case 3:
                         int x = 0;
-                        foreach (Transform t in group1SpawnPoints)
+                        foreach (Transform t in group2SpawnPoints)
                         {
                             x++;
-                            Instantiate(Enemy1, t.position, Quaternion.identity);
+                            Instantiate(Enemy2, t.position, Quaternion.identity);
                         }
                         total -= x;
                         break;
@@ -114,10 +114,10 @@ public class EnemySpawner : MonoBehaviour
                         break;
                     case 5:
                         int j = 0;
-                        foreach (Transform t in ladderSpawnPoints)
+                        foreach (Transform t in group2SpawnPoints)
                         {
                             j++;
-                            Instantiate(Enemy1, t.position, Quaternion.identity);
+                            Instantiate(Enemy2, t.position, Quaternion.identity);
                         }
                         total -= j;
                         break;
@@ -126,7 +126,7 @@ public class EnemySpawner : MonoBehaviour
                         foreach (Transform t in group1SpawnPoints)
                         {
                             g++;
-                            Instantiate(Enemy1, t.position, Quaternion.identity);
+                            Instantiate(Enemy3, t.position, Quaternion.identity);
                         }
                         total -= g;
                         break;
@@ -135,7 +135,7 @@ public class EnemySpawner : MonoBehaviour
                         foreach (Transform t in ladderSpawnPoints)
                         {
                             k++;
-                            Instantiate(Enemy1, t.position, Quaternion.identity);
+                            Instantiate(Enemy3, t.position, Quaternion.identity);
                         }
                         total -= k;
                         break;

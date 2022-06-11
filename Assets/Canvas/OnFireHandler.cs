@@ -6,20 +6,20 @@ public class OnFireHandler : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject Player;
-    private PlayerScript playerScript;
+    private PlayerFireScript script;
 
     public void Start()
     {
-        playerScript = Player.GetComponent<PlayerScript>();
+        script = Player.GetComponent<PlayerFireScript>();
     }
 
     public void Fire()
     {
-        playerScript.Fire();
+        script.Fire();
     }
 
     public void FireSpecial()
     {
-        playerScript.FireSpecial();
+        script.FireSpecial();
     }
 }

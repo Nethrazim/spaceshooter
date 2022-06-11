@@ -5,22 +5,26 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PlayerScript : MonoBehaviour
+public class PlayerScriptLvl2 : MonoBehaviour
 {
     public int life = 5;
+    private int specialBullets = 40;
     public Text LifeText;
+    public Text SpecialBulletsText;
+    public GameObject bullet1;
+    public GameObject bulletStar2;
+
     private Rigidbody2D selfRB;
+
     public GameObject playerExplosion;
-    private PlayerMovementScript movementScript;
-    private PlayerFireScript fireScript;
-
-
+    public PlayerMovementScript playerMovementScript;
+    public PlayerFireScript playerFireScript;
     // Start is called before the first frame update
     void Start()
     {
         selfRB = GetComponent<Rigidbody2D>();
-        movementScript = GetComponent<PlayerMovementScript>();
-        fireScript = GetComponent<PlayerFireScript>();
+        playerMovementScript = GetComponent<PlayerMovementScript>();
+        playerFireScript = GetComponent<PlayerFireScript>();
         LifeText.text = life.ToString();
     }
 
@@ -50,15 +54,15 @@ public class PlayerScript : MonoBehaviour
 
         if (collision.gameObject.tag == "level1_star_weapon")
         {
-            fireScript.specialBullets += 12;
-            fireScript.SpecialBulletsText.text = fireScript.specialBullets.ToString();
+            playerFireScript.specialBullets += 12;
+            SpecialBulletsText.text = playerFireScript.specialBullets.ToString();
         }
 
 
         if (collision.gameObject.tag == "bounds")
         {
             Debug.Log("Move into BOUND");
-            movementScript.MoveStop();
+            playerMovementScript.MoveStop();
         }
 
         if (life <= 0)
@@ -67,7 +71,6 @@ public class PlayerScript : MonoBehaviour
             GameOverPanelScript.instance.ShowGameOverPanel(true);
             GameOverPanelScript.instance.setStatusVisibility(false);
             GameOverPanelScript.instance.setGameOverVisibility(true);
-            GameOverPanelScript.instance.setContinueButtonVisibility(false);
             Time.timeScale = 0f;
             GameObject.Destroy(gameObject);
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

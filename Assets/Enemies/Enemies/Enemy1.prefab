@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4645571215693544596}
   - component: {fileID: 4932283198085893814}
   - component: {fileID: -6334897538908236845}
+  - component: {fileID: 2477786756672318200}
   m_Layer: 6
   m_Name: Enemy1
   m_TagString: basic_enemy
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 8625071348324264601}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 9.81, y: 3.63, z: 10}
-  m_LocalScale: {x: 0.7903385, y: 0.7903385, z: 0.7903385}
+  m_LocalScale: {x: 0.6344205, y: 0.6344205, z: 0.6344205}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -122,5 +123,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66d51ac3ff5d9414c8a68c50c663994e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 7053821038032526922, guid: 7035cbd898883e9498e6465e59a2facb, type: 3}
+  explosion: {fileID: 7053821038032526922, guid: b0f1a30bd14cd8a4697d99a2dd6d3946, type: 3}
   moveSpeed: 6
+  life: 2
+  seedDropBoxValue: 3
+--- !u!114 &2477786756672318200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8625071348324264601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb08543fb20c8294394ff8b2287b4b78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DropBox: {fileID: 8580047007560168155, guid: 975a0874dbcdcd947a9bb77a8ce0c49d, type: 3}
+  moveSpeed: 3

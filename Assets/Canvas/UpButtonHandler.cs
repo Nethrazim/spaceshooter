@@ -5,20 +5,20 @@ using UnityEngine;
 public class UpButtonHandler : MonoBehaviour
 {
     public GameObject Player;
-    private PlayerScript playerScript;
+    private PlayerMovementScript playerMovementScript;
 
     public void Start()
     {
-        playerScript = Player.GetComponent<PlayerScript>();
+        playerMovementScript = Player.GetComponent<PlayerMovementScript>();
     }
 
     public void MoveUp()
     {
-        playerScript.MoveUp();
+        playerMovementScript.MoveUp();
     }
 
     public void MoveStop()
     {
-        playerScript.MoveStop();
+        playerMovementScript.MoveStop();
     }
 }

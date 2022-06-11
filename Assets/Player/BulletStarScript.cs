@@ -2,13 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletScript2 : MonoBehaviour
+public class BulletStarScript : MonoBehaviour
 {
-    private float _moveSpeed = 22f;
+    public float _moveSpeed = 62f;
     public Rigidbody2D rigidbody2D;
     public int angle = 1;
-    private float yVelocityStep2 = 0.1f;
-    private float yVelocityStep1 = 0.05f;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +24,7 @@ public class BulletScript2 : MonoBehaviour
                     rigidbody2D.velocity = new Vector2(_moveSpeed, _moveSpeed/4);
                     break;
                 case 1:
-                    rigidbody2D.velocity = new Vector2(_moveSpeed, _moveSpeed / 18);//rigidbody2D.velocity.y + yVelocityStep1
+                    rigidbody2D.velocity = new Vector2(_moveSpeed, _moveSpeed / 18);
                     break;
                 case 0:
                     rigidbody2D.velocity = new Vector2(_moveSpeed, rigidbody2D.velocity.y);

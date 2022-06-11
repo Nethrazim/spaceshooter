@@ -5,20 +5,20 @@ using UnityEngine;
 public class LeftButtonHandler : MonoBehaviour
 {
     public GameObject Player;
-    private PlayerScript playerScript;
+    private PlayerMovementScript script;
 
     public void Start()
     {
-        playerScript = Player.GetComponent<PlayerScript>();
+        script = Player.GetComponent<PlayerMovementScript>();
     }
 
     public void MoveLeft()
     {
-        playerScript.MoveLeft();
+        script.MoveLeft();
     }
 
     public void MoveStop()
     {
-        playerScript.MoveStop();
+        script.MoveStop();
     }
 }
