@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -9,46 +10,74 @@ public class EnemySpawner : MonoBehaviour
     public GameObject Enemy2;
     public GameObject Enemy3;
     public GameObject Boss;
-    public bool hasBoss = false;
     public bool canSpawn = false;
-    private Transform spawnPoint1;
-    private Transform spawnPoint2;
-    private Transform spawnPoint3;
-    private Transform spawnPoint4;
-    private Transform spawnPoint5;
+    public Transform spawnPoint1;
+    public Transform spawnPoint2;
+    public Transform spawnPoint3;
+    public Transform spawnPoint4;
+    public Transform spawnPoint5;
     public Transform[] ladderSpawnPoints;//something wrong
     public Transform[] ladderSpawnPointsReverse;
     public Transform[] group1SpawnPoints;
     public Transform[] group2SpawnPoints;//something wrong
     public Transform[] oblicalPath1;
+    public Transform[] queueSpawnPoints;
+    public Transform[] queueSpawnPoints2;
+    public Transform[] queueSpawnPoints3;
 
     private System.Random randomGenerator = new System.Random();
-    private int total = 10;
     private bool canGenerateBoss = true;
 
-    public int cursorIdx = 50;
-    private int[] enemyWaves = new int[50];
+    public int cursorIdx = 0;
+    public int[] enemyWaves = new int[25];
+
+    private int sceneIndex = 0;
+
+    private delegate void Spawn();
+    private Spawn SpawnLevelEnemies;
+    private delegate void GenerateEnemyWaves();
+    private GenerateEnemyWaves GenerateEnemyWavesDel;
     // Start is called before the first frame update
     void Start()
     {
-        spawnPoint1 = GameObject.Find("SpawnPoint1").transform;
-        spawnPoint2 = GameObject.Find("SpawnPoint2").transform;
-        spawnPoint3 = GameObject.Find("SpawnPoint3").transform;
-        spawnPoint4 = GameObject.Find("SpawnPoint4").transform;
-        spawnPoint5 = GameObject.Find("SpawnPoint5").transform;
-
-        generateEnemyWaves();
-        
-        InvokeRepeating("SpawnEnemy", 2.5f, 3.5f);
+        SetupEnemySpawner();
+        GenerateEnemyWavesDel();
+        InvokeRepeating("SpawnEnemy", 2.2f, 3.0f);
         Invoke("CanSpawn", 3f);
     }
 
-    private void generateEnemyWaves()
+    private void SetupEnemySpawner()
+    {
+        sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (sceneIndex == 0)
+        {
+            SpawnLevelEnemies = SpawnLevel1;
+            GenerateEnemyWavesDel = generateEnemyWavesLevel1;
+        }
+        if (sceneIndex == 1)
+        {
+            SpawnLevelEnemies = SpawnLevel2;
+            GenerateEnemyWavesDel = generateEnemyWavesLevel2;
+        }
+    }
+
+    private void generateEnemyWavesLevel1()
     { 
         int i = 0;
         do
         {
             enemyWaves[i] = generateRandomInt(1,9);
+            i++;
+        }
+        while (i <= enemyWaves.Length - 1);
+    }
+
+    private void generateEnemyWavesLevel2()
+    {
+        int i = 0;
+        do
+        {
+            enemyWaves[i] = generateRandomInt(1, 4);
             i++;
         }
         while (i <= enemyWaves.Length - 1);
@@ -68,88 +97,108 @@ public class EnemySpawner : MonoBehaviour
     {
         canSpawn = true;
     }
+    private void SpawnLevel1()
+    {
+        switch (enemyWaves[cursorIdx])
+        {
+            case 1:
+                foreach (Transform t in group1SpawnPoints)
+                {
+                    Instantiate(Enemy1, t.position, Quaternion.identity);
+                }
+                break;
+            case 2:
+                foreach (Transform t in ladderSpawnPoints)
+                {
+                    Instantiate(Enemy1, t.position, Quaternion.identity);
+                }
+                break;
+            case 3:
+                foreach (Transform t in group2SpawnPoints)
+                {
+                    Instantiate(Enemy2, t.position, Quaternion.identity);
+                }
+                break;
+            case 4:
+                foreach (Transform t in ladderSpawnPointsReverse)
+                {
+                    Instantiate(Enemy1, t.position, Quaternion.identity);
+                }
+                break;
+            case 5:
+                foreach (Transform t in group2SpawnPoints)
+                {
+                    Instantiate(Enemy2, t.position, Quaternion.identity);
+                }
+                break;
+            case 6:
+                foreach (Transform t in group1SpawnPoints)
+                {
+                    Instantiate(Enemy3, t.position, Quaternion.identity);
+                }
+                break;
+            case 7:
+                foreach (Transform t in ladderSpawnPoints)
+                {
+                    Instantiate(Enemy3, t.position, Quaternion.identity);
+                }
+                break;
+            case 8:
+                foreach (Transform t in group2SpawnPoints)
+                {
+                    Instantiate(Enemy1, t.position, Quaternion.identity);
+                }
+                break;
+        }
+    }
+    private void SpawnLevel2()
+    {
+        switch (enemyWaves[cursorIdx])
+        {
+            case 1:
+                switch (randomGenerator.Next(1, 3))
+                {
+                    case 1:
+                        foreach (Transform t in queueSpawnPoints)
+                        {
+                            Instantiate(Enemy1, t.position, Quaternion.identity);
+                        }
+                    break;
+                    case 2:
+                        foreach (Transform t in queueSpawnPoints2)
+                        {
+                            Instantiate(Enemy1, t.position, Quaternion.identity);
+                        }
+                    break;
+                    case 3:
+                    foreach (Transform t in queueSpawnPoints3)
+                    {
+                        Instantiate(Enemy1, t.position, Quaternion.identity);
+                    }
+                    break;
+                }
+                break;
+            case 2:
+                foreach (Transform t in ladderSpawnPoints)
+                {
+                    Instantiate(Enemy3, t.position, Quaternion.identity);
+                }
+                break;
+            case 3:
+                foreach (Transform t in group2SpawnPoints)
+                {
+                    Instantiate(Enemy2, t.position, Quaternion.identity);
+                }
+                break;
+        }
+    }
     private void SpawnEnemy()
     {
         if (canSpawn)
         {
             if (cursorIdx <= enemyWaves.Length - 1)
             {
-                switch (enemyWaves[cursorIdx])
-                {
-                    case 1:
-                        int p = 0;
-                        foreach (Transform t in group1SpawnPoints)
-                        {
-                            p++;
-                            Instantiate(Enemy1, t.position, Quaternion.identity);
-                        }
-                        total -= p;
-                        break;
-                    case 2:
-                        int h = 0;
-                        foreach (Transform t in ladderSpawnPoints)
-                        {
-                            h++;
-                            Instantiate(Enemy1, t.position, Quaternion.identity);
-                        }
-                        total -= h;
-                        break;
-                    case 3:
-                        int x = 0;
-                        foreach (Transform t in group2SpawnPoints)
-                        {
-                            x++;
-                            Instantiate(Enemy2, t.position, Quaternion.identity);
-                        }
-                        total -= x;
-                        break;
-                    case 4:
-                        int i = 0;
-                        foreach (Transform t in ladderSpawnPointsReverse)
-                        {
-                            i++;
-                            Instantiate(Enemy1, t.position, Quaternion.identity);
-                        }
-                        total -= i;
-                        break;
-                    case 5:
-                        int j = 0;
-                        foreach (Transform t in group2SpawnPoints)
-                        {
-                            j++;
-                            Instantiate(Enemy2, t.position, Quaternion.identity);
-                        }
-                        total -= j;
-                        break;
-                    case 6:
-                        int g = 0;
-                        foreach (Transform t in group1SpawnPoints)
-                        {
-                            g++;
-                            Instantiate(Enemy3, t.position, Quaternion.identity);
-                        }
-                        total -= g;
-                        break;
-                    case 7:
-                        int k = 0;
-                        foreach (Transform t in ladderSpawnPoints)
-                        {
-                            k++;
-                            Instantiate(Enemy3, t.position, Quaternion.identity);
-                        }
-                        total -= k;
-                        break;
-                    case 8:
-                        int m = 0;
-                        foreach (Transform t in group2SpawnPoints)
-                        {
-                            m++;
-                            Instantiate(Enemy1, t.position, Quaternion.identity);
-                        }
-                        total -= m;
-                        break;
-                }
-
+                SpawnLevelEnemies();
             }
             else
             {
